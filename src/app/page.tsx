@@ -1,9 +1,32 @@
-import React from 'react'
+'use client'
+import React, { FormEvent, useRef } from 'react'
 import { Slack } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
+import { signIn } from 'aws-amplify/auth'
+import { Amplify } from 'aws-amplify'
+
+import outputs from '../../amplify_outputs.json'
+
+Amplify.configure(outputs)
 
 export default function LoginPage() {
+  const emailRef = useRef<HTMLInputElement>(null)
+  const passwordRef = useRef<HTMLInputElement>(null)
+  async function handleSubmit(event: FormEvent) {
+    event.preventDefault()
+
+    try {
+      await signIn({
+        username: emailRef.current?.value,
+        password: passwordRef.current?.value,
+      })
+
+      console.log('Login successful')
+    } catch (error) {
+      console.error('Error signing in', error)
+    }
+  }
   return (
     <div className="h-screen grid grid-cols-2">
       <div className="bg-zinc-900">
@@ -31,11 +54,16 @@ export default function LoginPage() {
               Enter your email below to login to your account
             </span>
           </div>
-          <div className="w-full flex flex-col gap-2">
-            <Input type="email" placeholder="Email" />
-            <Input type="password" placeholder="Password" />
-            <Button>Login</Button>
-          </div>
+          <form onSubmit={handleSubmit} className="w-full flex flex-col gap-2">
+            <Input type="email" placeholder="Email" ref={emailRef} required />
+            <Input
+              type="password"
+              placeholder="Password"
+              ref={passwordRef}
+              required
+            />
+            <Button type="submit">Login</Button>
+          </form>
         </div>
       </div>
     </div>
