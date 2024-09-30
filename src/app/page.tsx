@@ -18,7 +18,7 @@ export default function LoginPage() {
 
     try {
       await signIn({
-        username: emailRef.current?.value,
+        username: emailRef.current?.value || '',
         password: passwordRef.current?.value,
       })
 
