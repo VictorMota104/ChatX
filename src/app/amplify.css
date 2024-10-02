@@ -1,0 +1,29 @@
+[data-amplify-authenticator] {
+  --amplify-components-authenticator-router-box-shadow: 0 0 16px var(--amplify-colors-overlay-10);
+  --amplify-components-authenticator-router-border-width: 0;
+  --amplify-components-authenticator-form-padding: var(--amplify-space-medium) var(--amplify-space-xl) var(--amplify-space-xl);
+  --amplify-components-button-primary-background-color: var(--amplify-colors-neutral-100);
+  --amplify-components-fieldcontrol-focus-box-shadow: 0 0 0 2px var(--amplify-colors-neutral-100);
+  --amplify-components-tabs-item-active-border-color: var(--amplify-colors-neutral-100);
+  --amplify-components-tabs-item-color: var(--amplify-colors-neutral-80);
+  --amplify-components-tabs-item-active-color: var(--amplify-colors-neutral-100);
+  --amplify-components-button-link-color: var(--amplify-colors-neutral-80);
+}
+.amplify-button--primary {
+    background: hsl(240, 5.9%, 10%);
+}
+.amplify-button--small {
+    color: hsl(240, 5.9%, 10%);
+}
+.amplify-button--small:hover {
+    background: none;
+}
+.amplify-tabs__item {
+    color: hsl(240, 5.9%, 10%);
+}
+.amplify-tabs__item:hover {
+    color: hsl(240, 5.9%, 10%);
+}
+.amplify-field-group:hover {
+    color: red;
+}
